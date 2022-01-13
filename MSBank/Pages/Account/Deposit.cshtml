@@ -1,0 +1,27 @@
+﻿@page
+@model MSBank.Pages.Account.DepositModel
+@{
+}
+
+<form method="post">
+
+    <div class="form-group">
+        <label asp-for="Amount">Amount</label>
+        <input class="form-control" asp-for="Amount" />
+        <span class="field-validation-error" asp-validation-for="Amount"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Created">Date of transaction</label>
+        <input class="form-control" asp-for="Created" />
+        <span class="field-validation-error" asp-validation-for="Created"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Comment">Comment</label>
+        <input class="form-control" asp-for="Comment" />
+        <span class="field-validation-error" asp-validation-for="Comment"></span>
+    </div>
+
+    <button type="submit" class="btn">Deposit</button>
+</form>

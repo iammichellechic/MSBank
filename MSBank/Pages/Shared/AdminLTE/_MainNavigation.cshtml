@@ -1,0 +1,65 @@
+﻿
+
+<aside class="main-sidebar sidebar-light-warning elevation-4">
+    <!-- Brand Logo -->
+    <a href="~/Home" class="brand-link">
+
+        <img src="~/img/MSbankLOGO.png" alt="AdminLTE Logo" class="navbar-brand" width="200px" height="90px" style="opacity:1">
+
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="~/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block">Alexander Pierce</a>
+            </div>
+        </div>
+
+        <!-- SidebarSearch Form -->
+        @*<div class="form-inline">
+            <div class="input-group" data-widget="sidebar-search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-sidebar">
+                        <i class="fas fa-search fa-fw"></i>
+                    </button>
+                </div>
+            </div>
+        </div>*@
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+               <li class="nav-item ">
+                    <a asp-page="/Index" class="nav-link">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>
+                            Home
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a asp-page="/Customer/Index" class="nav-link">
+                        <i class="nav-icon fa fa-search"></i>
+                        <p>
+                            Customer Search
+                        </p>
+                    </a>
+                </li>
+                 <li class="nav-item ">
+                    <a asp-page="/Account/Index" class="nav-link">
+                        <i class="nav-icon fas fa-credit-card"></i>
+                        <p>
+                            Account
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>

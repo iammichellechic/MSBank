@@ -19,7 +19,7 @@ namespace MSBank.Services
             if (!string.IsNullOrEmpty(q))
             {
                 query = query
-                        .Where(r => q == null || r.Givenname.Contains(q) || r.Surname.Contains(q) || r.City.Contains(q));
+                        .Where(r => q == null || r.Givenname.Contains(q) || r.Surname.Contains(q) || r.City.Contains(q) || r.CustomerId.ToString().Contains(q));
             }
 
             if (sortColumn == "Customer ID")

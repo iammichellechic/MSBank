@@ -1,0 +1,145 @@
+﻿@page
+@model MSBank.Pages.Customer.CustomerProfileModel
+@{
+}
+<section class="py-5">
+@*
+    <div class="row">
+        <div class="col-lg-12 mb-5">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="h6 text-uppercase mb-0">SEARCH A CUSTOMER</h3>
+                </div>
+                <div class="card-body">               
+                    <form method="get">
+
+                        <div class="form-row align-items-center">
+                            <div class="col-auto">
+                                
+                                <input asp-for="@Model.Q" placeholder="Enter customers name, last name or city">
+                                  <input type="text" class="form-control" id="q" name="q"placeholder="Enter customers ID">
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+<div class="card mx-auto" style="width: 18rem;">
+  <img src="/img/avatar5.png" class="card-img-top" alt="...">
+  <div class="card-body">
+    <a asp-page="/Account/AccountInfo" asp-route-accountId="@Model.CustomersAccountId" class="btn btn-primary">View Account's Transactions</a>
+  </div>
+</div>
+
+
+
+@*<h1>@Model.Givenname, @Model.Surname</h1>
+<h2>Customer ID: @Model.CustomerId</h2>*@
+
+  
+<div class="table-responsive">
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+             <th>
+                 <p>Givenname, Surname</p>
+              </th>
+             <th>
+                 <p>Customer Id</p>
+             </th>
+
+            <th>Gender</th>
+       
+            <th>Street Address</th>
+         
+            <th>City</th>
+        
+            <th>Zipcode</th>
+      
+            <th>Country Code</th>
+          
+            <th>Personal Number</th>
+       
+            <th>Birthday</th>
+         
+            <th>Telephone country code</th>
+      
+            <th>Email Address</th>
+      
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var customer in Model.CustomerProfile)
+    {
+    <tr>
+        <td>
+            @customer.Givenname, @customer.Surname
+        </td>
+        <td>
+            @customer.CustomerId
+        </td>
+   
+        <td>
+            @customer.Gender
+        </td>
+        <td>
+            @customer.Streetaddress
+        </td>
+        <td>
+            @customer.City
+        </td>
+        <td>
+            @customer.Zipcode
+        </td>
+        <td>
+            @customer.CountryCode
+        </td>
+        <td>
+            @customer.NationalId
+        </td>
+        <td>
+            @customer.Birthday
+        </td>
+        <td>
+            @customer.Telephonecountrycode
+        </td>
+        <td>
+            @customer.Emailaddress
+        </td>
+           
+    </tr>
+    }
+
+    
+</table>
+</div>
+
+  
+<div class="table-responsive">
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Account</th>
+            <th scope="col">Balance</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+       @foreach (var customer in Model.CustomerProfile)
+    {
+            <tr>
+                <td>@customer.AccountId</td>
+                <td>@customer.Balance</td>
+            </tr>
+    }
+     
+    </tbody>
+</table>
+</div>
+</section>

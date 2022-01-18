@@ -7,7 +7,7 @@ using MSBank.Services;
 
 namespace MSBank.Pages.Customer
 {
-    [Authorize(Roles="Admin")]
+   // [Authorize(Roles="Admin")]
     public class IndexModel : PageModel
     {
         private readonly BankAppDataContext _context;

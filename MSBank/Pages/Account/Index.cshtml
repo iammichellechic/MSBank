@@ -19,7 +19,10 @@
             @foreach (var person in Model.CustomerAccount)
             {
                 <tr>
-                    <td>@person.AccountNumber</td>
+                    <td>
+                        <a asp-page="AccountInfo" asp-route-accountId="@person.AccountNumber">@person.AccountNumber</a>
+
+                    </td>
                     <td>@person.Balance</td>
                 
                    <td>
@@ -36,11 +39,12 @@
                         </a>
 
                     </td>
-                </tr>
+
+               </tr>
             }
         </table>
         
-            <a class="btn" asp-page="New">Create new</a>
+            
 
     </div>
 </div>

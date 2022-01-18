@@ -1,0 +1,96 @@
+﻿@page
+@model MSBank.Pages.Account.AccountInfoModel
+@{
+}
+
+<section class="py-5">
+    
+<div class="card mx-auto" style="width: 18rem;">
+  <img src="/img/avatar5.png" class="card-img-top" alt="...">
+  <div class="card-body">
+   
+    <a href="#" class="btn btn-primary">Make A Transaction</a>
+  </div>
+</div>
+
+
+<h2>Account Id:@Model.AccountId</h2>
+<h3>Total Current Balance:@Model.TotalBalance</h3>
+
+<table class="table" id="transactions-table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Id</th>       
+            <th>Date</th>         
+            <th>Type</th>       
+            <th>Amount</th> 
+            <th>Balance</th> 
+        </tr>
+     
+          
+    </thead>
+    <tbody>
+     @*   @foreach (var account in Model.CustomerTransactions)
+       {
+    <tr>
+        <td>
+            @account.TransactionId
+        </td>
+        <td>
+            @account.Date
+        </td>
+        <td>
+            @account.Type
+        </td>
+        <td>
+            @account.Amount
+        </td>
+         <td>
+            @account.Balance
+        </td>
+            
+    </tr>
+       }*@
+    </tbody>
+   
+</table>
+
+    <a class="btn" href="javascript:fetchMore();">See more</a>
+
+</section>
+
+@section Scripts
+{
+    <script>
+
+        lastTicks = 0;
+        function fetchMore() {
+            fetch("AccountInfo?handler=FetchMore&lastTicks=" + lastTicks + "&accountId=@Model.AccountId")
+                .then((response) => response.json())
+                .then((json) => {
+                        lastTicks = json.lastTicks;
+                        json.items.forEach(tableElements);
+                    }
+                );
+        }
+
+        
+        function tableElements(element) {
+            document.querySelector('#transactions-table tbody').innerHTML +=
+                `<tr>
+        <td>${element.id}</td>
+        <td>${element.date}</td>
+        <td>${element.type}</td>
+        <td>${element.amount}</td>
+        <td>${element.balance}</td>
+
+    </tr>`;
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            fetchMore();
+        });
+
+        
+    </script>    
+}

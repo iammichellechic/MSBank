@@ -21,7 +21,7 @@
 
                         <div class="form-row align-items-center">
                             <div class="col-auto">
-                                <input asp-for="@Model.Q" placeholder="Enter customers name, last name or city">
+                                <input asp-for="@Model.Q"  aria-describedby="emailHelp" placeholder="Enter customers name, last name or city">
                             </div>
                             <div class="col-auto">
                                 <button type="submit" class="btn btn-primary">Search</button>
@@ -34,10 +34,12 @@
         </div>
     </div>
 
- 
-<table class="table">
-    <thead>
-    <tr><th>
+   
+ <div class="table-responsive">
+    <table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th>
             Customer ID
             <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="Customer ID" asp-route-sortOrder="asc">
                 <i class="fa-solid fa fa-angle-up"></i>
@@ -91,6 +93,7 @@
                 <i class="fa-solid fa fa-angle-down"></i>
             </a>
         </th>
+         <th scope="col"></th>
         <th></th>
         </tr>
     </thead>
@@ -116,7 +119,9 @@
         <td>
             @customer.City
         </td>
-
+        <td>
+            <a asp-page="/Customer/CustomerProfile" asp-route-customerId="@customer.CustomerId" class="btn btn-secondary"> View Customer</a>
+        </td>   
     </tr>
     }
      <tr>
@@ -160,6 +165,7 @@
     </tr>
 </tbody>
 </table>
+</div>
 </section>
 
 

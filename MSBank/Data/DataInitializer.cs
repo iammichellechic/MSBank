@@ -16,7 +16,7 @@ namespace MSBank.Data
         }
         public void SeedData()
         {
-          //  _context.Database.Migrate();
+           _dbcontext.Database.Migrate();
             SeedRoles();
             SeedUsers();
         }

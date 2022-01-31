@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MSBank.Data;
 using MSBank.Models;
 using MSBank.Services;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-//builder.Services.AddTransient<DataInitializer>();
+
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
    .AddRoles<IdentityRole>() 
    .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -25,7 +26,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddTransient<DataInitializer>();
 builder.Services.AddTransient<ICustomerService, CustomerService>();
 builder.Services.AddTransient<IAccountService, AccountService>();
-//builder.Services.<ITransactionService>();
+builder.Services.AddTransient<ITransactionService, TransactionService>();
+
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+builder.Services.AddResponseCaching();
 
 builder.Services.AddRazorPages();
 
@@ -53,9 +59,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseResponseCaching();
 
 app.MapRazorPages();
 

@@ -3,65 +3,99 @@
 @{
 }
 
-<section class="py-5">
-    
-<div class="card mx-auto" style="width: 18rem;">
-  <img src="/img/avatar5.png" class="card-img-top" alt="...">
-  <div class="card-body">
-   
-    <a href="#" class="btn btn-primary">Make A Transaction</a>
-  </div>
+
+
+<div class="container p-3">
+    <div class="row pt-4">
+
+        @foreach (var customer in Model.CustomerProfile)
+        {
+            <partial name="_CustomerProfileBox" model="@customer" />
+        }
+    </div>
+    <br />
+
+    <div class="row pt-4">
+        <div class="col-6">
+
+            <h2 class="text-primary">Account Id:@Model.AccountId</h2>
+            <h3 class="text-primary">Current Account Balance:@Model.AccountBalance</h3>
+        </div>
+
+    </div>
+    <br />
+
+    <div class="row form-horizontal">
+        <div class="col-12">
+
+            <div class="form-group row">
+                <div class="col-8 offset-2 row">
+                    <div class="col">
+                        <a asp-page="Deposit" asp-route-accountId="@Model.AccountId">
+                            Deposit
+                            <i class='fas fa-arrow-circle-down'></i>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a asp-page="Withdraw" asp-route-accountId="@Model.AccountId">
+                            Withdraw
+                            <i class='fas fa-arrow-circle-up'></i>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
 
+<div class="container p-3">
+    <table class="table" id="transactions-table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Balance</th>
+            </tr>
 
-<h2>Account Id:@Model.AccountId</h2>
-<h3>Total Current Balance:@Model.TotalBalance</h3>
 
-<table class="table" id="transactions-table">
-    <thead class="thead-dark">
-        <tr>
-            <th>Id</th>       
-            <th>Date</th>         
-            <th>Type</th>       
-            <th>Amount</th> 
-            <th>Balance</th> 
-        </tr>
-     
-          
-    </thead>
-    <tbody>
-     @*   @foreach (var account in Model.CustomerTransactions)
-       {
-    <tr>
-        <td>
-            @account.TransactionId
-        </td>
-        <td>
-            @account.Date
-        </td>
-        <td>
-            @account.Type
-        </td>
-        <td>
-            @account.Amount
-        </td>
-         <td>
-            @account.Balance
-        </td>
-            
-    </tr>
-       }*@
-    </tbody>
-   
-</table>
+        </thead>
+        <tbody>
+            @*   @foreach (var account in Model.CustomerTransactions)
+                {
+                <tr>
+                <td>
+                @account.TransactionId
+                </td>
+                <td>
+                @account.Date
+                </td>
+                <td>
+                @account.Type
+                </td>
+                <td>
+                @account.Amount
+                </td>
+                <td>
+                @account.Balance
+                </td>
 
-    <a class="btn" href="javascript:fetchMore();">See more</a>
+                </tr>
+                }*@
+        </tbody>
 
-</section>
+    </table>
+
+    <a class="btn btn-info" href="javascript:fetchMore();">See more</a>
+
+</div>
 
 @section Scripts
 {
-    <script>
+<script>
 
         lastTicks = 0;
         function fetchMore() {
@@ -74,7 +108,7 @@
                 );
         }
 
-        
+
         function tableElements(element) {
             document.querySelector('#transactions-table tbody').innerHTML +=
                 `<tr>
@@ -91,6 +125,6 @@
             fetchMore();
         });
 
-        
-    </script>    
+
+</script>
 }

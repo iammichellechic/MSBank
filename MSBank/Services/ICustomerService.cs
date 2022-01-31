@@ -6,10 +6,10 @@ namespace MSBank.Services
     public interface ICustomerService
     {
 
-        // List<Customer> GetCustomers(string sortColumn, string sortOrder);
 
-        //add int customerId
         PagedResult<Customer> GetAll(string sortColumn,
-            string sortOrder, int page, string q);
+            ExtensionMethods.QuerySortOrder sortOrder, int page, string q );
+
+    
     }
 }

@@ -1,62 +1,12 @@
-﻿@*<nav class="main-header navbar navbar-expand navbar-primary navbar-light">
-   <!-- Left navbar links -->
-    <ul class="navbar-nav">
-  
-            <!-- Navbar Search -->
-     
-        <div class="input-group">
-             <div class="form-outline">
-             <input type="search" id="form1" class="form-control" />
-                <label class="form-label" for="form1">Search</label>
-            </div>
-            <button type="button" class="btn btn-primary">
-            <i class="fas fa-search"></i>
-             </button>
-        </div>
-         
-    </ul>
-    <!-- Right navbar links -->
+﻿@*<nav class="main-header navbar navbar-expand navbar-primary navbar-light">*@
+
+<nav class="main-header navbar navbar-expand navbar navbar-light" style="background-color: #e3f2fd;">
+    <!-- navbar link -->
     <ul class="navbar-nav ml-auto">
 
-         <partial name="_LoginPartial"/>
+        <partial name="_LoginPartial" />
 
     </ul>
-            @*<div class="header__search">
-                <input type=text placeholder="Type Customer Id">
-                <i class="bx bx-search"></i>
-            </div>
-            <div class="header__avatar">
-                
-                <partial name="_LoginPartial"/>
 
-            </div>
- 
-</nav>*@
+</nav>
 
-<div class="main-header navbar navbar-expand navbar-primary navbar-light">
-        <div class="col-lg-12 mb-5">
-            <div class="card">
-            @*    <div class="card-header">
-                    <h3 class="h6 text-uppercase mb-0">SEARCH A CUSTOMER</h3>
-                </div>*@
-                <div class="card-body">
-                 
-                   @* <form method="get">*@
-
-                        <div class="form-row align-items-center">
-                          @*  <div class="col-auto">
-                                <input type="text" placeholder="Enter customers name, last name or city">
-                            </div>
-                            <div class="col-auto">
-                                <button type="submit" class="btn btn-primary">Search</button>
-                            </div>*@
-                            <div class="col-auto">
-                                  <partial name="_LoginPartial"/>
-                            </div>
-                        </div>
-
-                   @* </form>*@
-                </div>
-            </div>
-        </div>
-    </div>

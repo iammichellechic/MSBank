@@ -1,6 +1,7 @@
 ﻿using MSBank.Infrastracture.Paging;
 using MSBank.Models;
 
+
 namespace MSBank.Services
 {
     public class CustomerService : ICustomerService
@@ -12,56 +13,45 @@ namespace MSBank.Services
         {
             _context = context;
         }
-        public PagedResult<Customer> GetAll(string sortColumn, string sortOrder, int page, string q)
+        public PagedResult<Customer> GetAll(string sortColumn, ExtensionMethods.QuerySortOrder sortOrder, int page, string q)
         {
             var query = _context.Customers.AsQueryable();
 
             if (!string.IsNullOrEmpty(q))
             {
                 query = query
-                        .Where(r => q == null || r.Givenname.Contains(q) || r.Surname.Contains(q) || r.City.Contains(q) || r.CustomerId.ToString().Contains(q));
+                        .Where(r => q == null || r.CustomerId.ToString().Contains(q) || r.Givenname.Contains(q) || r.Surname.Contains(q) || r.City.Contains(q));
+
+            }
+             if (string.IsNullOrEmpty(sortColumn))
+                    sortColumn = nameof(Customer.CustomerId);
+
+
+            else if (string.IsNullOrEmpty(sortColumn))
+                sortColumn = nameof(Customer.Givenname);
+
+            else if (string.IsNullOrEmpty(sortColumn))
+                sortColumn = nameof(Customer.Surname);
+
+            else if (string.IsNullOrEmpty(sortColumn))
+                sortColumn = nameof(Customer.NationalId);
+
+            else if (string.IsNullOrEmpty(sortColumn))
+                sortColumn = nameof(Customer.Streetaddress);
+
+            else if (string.IsNullOrEmpty(sortColumn))
+                sortColumn = nameof(Customer.City);
+
+    
+
+            query = query.OrderBy(sortColumn, sortOrder);
+
+                return query.GetPaged(page, 50);
             }
 
-            if (sortColumn == "Customer ID")
-                if (sortOrder == "asc")
-                    query = query.OrderBy(r => r.CustomerId);
-                else
-                    query = query.OrderByDescending(r => r.CustomerId);
-
-            else if (sortColumn == "First Name" || string.IsNullOrEmpty(sortColumn))
-                if (sortOrder == "desc")
-                    query = query.OrderByDescending(r => r.Givenname);
-                else
-                    query = query.OrderBy(r => r.Givenname);
-
-            else if (sortColumn == "Last Name" || string.IsNullOrEmpty(sortColumn))
-                if (sortOrder == "desc")
-                    query = query.OrderByDescending(r => r.Surname);
-                else
-                    query = query.OrderBy(r => r.Surname);
-
-            else if (sortColumn == "Personal Number" || string.IsNullOrEmpty(sortColumn))
-                if (sortOrder == "desc")
-                    query = query.OrderByDescending(r => r.NationalId);
-                else
-                    query = query.OrderBy(r => r.NationalId);
-
-            else if (sortColumn == "Street Address" || string.IsNullOrEmpty(sortColumn))
-                if (sortOrder == "desc")
-                    query = query.OrderByDescending(r => r.Streetaddress);
-                else
-                    query = query.OrderBy(r => r.Streetaddress);
-
-            else if (sortColumn == "City")
-                if (sortOrder == "asc")
-                    query = query.OrderBy(r => r.City);
-                else
-                    query = query.OrderByDescending(r => r.City);
-
-            return query.GetPaged(page, 50);
-        }
-   
-        // return query.ToList();
+       
     }
+ 
 
 }
+

@@ -16,14 +16,18 @@ namespace MSBank.Pages.Account
             public decimal Balance { get; set; }
         }
 
+        public string Q { get; set; }
+
         public IndexModel(IAccountService accountService)
         {
             _accountService = accountService;
         }
 
-        public void OnGet()
+        public void OnGet(string q)
         {
-            CustomerAccount = _accountService.GetAll().Select(r => new AccountViewModel
+            Q = q;
+            
+            CustomerAccount = _accountService.GetAll(Q).Select(r => new AccountViewModel
             {      
                 AccountNumber = r.AccountId,
                 Balance = r.Balance

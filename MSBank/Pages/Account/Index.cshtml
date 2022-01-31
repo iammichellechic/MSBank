@@ -3,48 +3,75 @@
 @{
 }
 
+<div class="container p-3">
 
-<div class="card">
-    <div class="card-header">
-        <h1>All Accounts</h1>
+    <div class="row pt-4">
+
+        <div class="col-lg-12 mb-5">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="h6 text-uppercase mb-0">SEARCH AN ACCOUNT</h3>
+                </div>
+                <div class="card-body">
+                    <form method="get">
+
+                        <div class="form-row align-items-center">
+                            <div class="col-lg-8">
+                                <input asp-for="@Model.Q" class="form-control" aria-describedby="emailHelp" placeholder="Enter customers account id">
+                            </div>
+                            <div class="col-4">
+                                <button type="submit" class="btn btn-outline-primary">Search</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="card-body">
-        <table class="table">
-            <tr>
-                <th>Account Number</th>
-                <th>Balance</th>
-                
-                <th></th>
-            </tr>
-            @foreach (var person in Model.CustomerAccount)
-            {
+    <br />
+
+    <div class="card">
+        <div class="card-header">
+            <h1>All Accounts</h1>
+        </div>
+        <div class="card-body">
+            <table class="table">
                 <tr>
-                    <td>
-                        <a asp-page="AccountInfo" asp-route-accountId="@person.AccountNumber">@person.AccountNumber</a>
+                    <th>Account Number</th>
+                    <th>Balance</th>
 
-                    </td>
-                    <td>@person.Balance</td>
-                
-                   <td>
-                        <a asp-page="Withdraw" asp-route-accountId="@person.AccountNumber">
-                            Withdraw
-                            <i class='fas fa-arrow-circle-up'></i>
-                        </a>
-                    </td>
+                    <th></th>
+                </tr>
+                @foreach (var person in Model.CustomerAccount)
+                {
+                    <tr>
+                        <td>
+                            <a asp-page="AccountInfo" asp-route-accountId="@person.AccountNumber">@person.AccountNumber</a>
 
-                      <td>
-                        <a asp-page="Deposit" asp-route-accountId="@person.AccountNumber">
-                            Deposit
-                            <i class='fas fa-arrow-circle-down'></i>
-                        </a>
+                        </td>
+                        <td>@person.Balance</td>
 
-                    </td>
+                        <td>
+                            <a asp-page="Withdraw" asp-route-accountId="@person.AccountNumber">
+                                Withdraw
+                                <i class='fas fa-arrow-circle-up'></i>
+                            </a>
+                        </td>
 
-               </tr>
-            }
-        </table>
-        
-            
+                        <td>
+                            <a asp-page="Deposit" asp-route-accountId="@person.AccountNumber">
+                                Deposit
+                                <i class='fas fa-arrow-circle-down'></i>
+                            </a>
 
+                        </td>
+
+                    </tr>
+                }
+            </table>
+
+        </div>
     </div>
+
 </div>

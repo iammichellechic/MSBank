@@ -3,25 +3,70 @@
 @{
 }
 
+
+
 <form method="post">
 
-    <div class="form-group">
-        <label asp-for="Amount">Amount</label>
-        <input class="form-control" asp-for="Amount" />
-        <span class="field-validation-error" asp-validation-for="Amount"></span>
-    </div>
+    <div class="border p-3 form-horizontal">
 
-    <div class="form-group">
-        <label asp-for="Created">Date of transaction</label>
-        <input class="form-control" asp-for="Created" />
-        <span class="field-validation-error" asp-validation-for="Created"></span>
-    </div>
+        <div class="form-group row">
+            <h2 class="text-primary pl-3">Make A Deposit</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
 
-    <div class="form-group">
-        <label asp-for="Comment">Comment</label>
-        <input class="form-control" asp-for="Comment" />
-        <span class="field-validation-error" asp-validation-for="Comment"></span>
-    </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label asp-for="Amount">Amount</label>
+                    </div>
+                </div>
 
-    <button type="submit" class="btn">Deposit</button>
+                <div class="form-group row">
+                    <div class="col-6">
+                        <input class="form-control" asp-for="Amount" />
+                        <span class="field-validation-error" asp-validation-for="Amount"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label asp-for="Created">Date of transaction</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-6">
+                        <input class="form-control" asp-for="Created" />
+                        <span class="field-validation-error" asp-validation-for="Created"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label asp-for="Comment">Comment</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-6">
+                        <input class="form-control" asp-for="Comment" />
+                        <span class="field-validation-error" asp-validation-for="Comment"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-2 row">
+                        <div class="col">
+                            <button type="submit" class="btn btn-success">Deposit</button>
+                        </div>
+                        <div class="col">
+                            <a asp-page="Index" class="btn btn-danger w-75">Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
+@section scripts
+{
+<partial name="_ValidationScriptsPartial" />
+}  

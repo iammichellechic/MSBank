@@ -1,14 +1,13 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using MSBank.Infrastracture.Paging;
 using MSBank.Models;
 using MSBank.Services;
 
-
 namespace MSBank.Pages.Customer
 {
-   // [Authorize(Roles="Admin")]
-    public class IndexModel : PageModel
+     public class IndexModel : PageModel
     {
         private readonly BankAppDataContext _context;
         private readonly ICustomerService _customerService;
@@ -30,13 +29,12 @@ namespace MSBank.Pages.Customer
             public string NationalId { get; set; }
         }
         public string Q { get; set; }
-        public string SortOrder { get; set; }
+        public ExtensionMethods.QuerySortOrder SortOrder { get; set; }
         public string SortColumn { get; set; }
-     
         public int CurrentPage { get; set; }
         public int PageCount { get; set; }
         public List<CustomerViewModel> Customers { get; set; } 
-        public void OnGet(string q, string sortColumn, string sortOrder,
+        public void OnGet(string q, string sortColumn, ExtensionMethods.QuerySortOrder sortOrder,
             int pageno)
         {
             Q = q;
@@ -45,13 +43,14 @@ namespace MSBank.Pages.Customer
             if (pageno == 0)
                 pageno = 1;
             CurrentPage = pageno;
+          
 
             var pageresult = _customerService.GetAll(sortColumn, sortOrder, CurrentPage, q);
 
             PageCount = pageresult.PageCount;
 
             Customers = pageresult.Results
-                
+               
                 .Select(c => new CustomerViewModel
                 {
                     CustomerId = c.CustomerId,

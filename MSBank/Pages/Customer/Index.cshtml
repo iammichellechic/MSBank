@@ -1,14 +1,15 @@
 ﻿@page
 @model MSBank.Pages.Customer.IndexModel
+@using MSBank.Infrastracture.Paging;
 
 @{
     ViewData["Title"] = "Customer";
 }
 
-
-<section class="py-5">
+<div class="container p-3">
 
     <div class="row">
+
         <div class="col-lg-12 mb-5">
             <div class="card">
                 <div class="card-header">
@@ -20,152 +21,155 @@
                     <form method="get">
 
                         <div class="form-row align-items-center">
-                            <div class="col-auto">
-                                <input asp-for="@Model.Q"  aria-describedby="emailHelp" placeholder="Enter customers name, last name or city">
+
+                            <div class="col-lg-10">
+                                <input asp-for="@Model.Q" class="form-control" aria-describedby="emailHelp" placeholder="Enter customer's Id, first name, last name or city">
                             </div>
-                            <div class="col-auto">
-                                <button type="submit" class="btn btn-primary">Search</button>
+                            <div class="col-2">
+                                <button type="submit" class="btn btn-outline-primary">Search</button>
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-   
- <div class="table-responsive">
-    <table class="table">
-    <thead class="thead-dark">
-    <tr>
-        <th>
-            Customer ID
-            <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="Customer ID" asp-route-sortOrder="asc">
-                <i class="fa-solid fa fa-angle-up"></i>
-            </a>
-            <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="Customer ID" asp-route-sortOrder="desc">
-                <i class="fa-solid fa fa-angle-down"></i>
-            </a>
-        </th>
-        <th>
-            First Name
-            <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="First Name" asp-route-sortOrder="asc">
-                <i class="fa-solid fa fa-angle-up"></i>
-            </a>
-            <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="First Name"  asp-route-sortOrder="desc">
-                <i class="fa-solid fa fa-angle-down"></i>
-            </a>
-        </th>
-        <th>
-            Last Name
-            <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="Last Name" asp-route-sortOrder="asc">
-                <i class="fa-solid fa fa-angle-up"></i>
-            </a>
-            <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="Last Name"  asp-route-sortOrder="desc">
-                <i class="fa-solid fa fa-angle-down"></i>
-            </a>
-        </th>
-        <th>
-            Personal Number
-            <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="Personal Number" asp-route-sortOrder="asc">
-                <i class="fa-solid fa fa-angle-up"></i>
-            </a>
-            <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="Personal Number"  asp-route-sortOrder="desc">
-                <i class="fa-solid fa fa-angle-down"></i>
-            </a>
-        </th>
-        <th>
-            Street Address
-            <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="Street Address" asp-route-sortOrder="asc">
-                <i class="fa-solid fa fa-angle-up"></i>
-            </a>
-            <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="Street Address"  asp-route-sortOrder="desc">
-                <i class="fa-solid fa fa-angle-down"></i>
-            </a>
-        </th>
-        <th>
-            City
-            <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="City" asp-route-sortOrder="asc">
-                <i class="fa-solid fa fa-angle-up"></i>
-            </a>
-            <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="City" asp-route-sortOrder="desc">
-                <i class="fa-solid fa fa-angle-down"></i>
-            </a>
-        </th>
-         <th scope="col"></th>
-        <th></th>
-        </tr>
-    </thead>
-<tbody>
-    @foreach (var customer in Model.Customers)
-    {
-    <tr>
-        <td>
-            @customer.CustomerId
-        </td>
-        <td>
-            @customer.Givenname
-        </td>
-        <td>
-            @customer.Surname
-        </td>
-        <td>
-            @customer.NationalId
-        </td>
-        <td>
-            @customer.Streetaddress
-        </td>
-        <td>
-            @customer.City
-        </td>
-        <td>
-            <a asp-page="/Customer/CustomerProfile" asp-route-customerId="@customer.CustomerId" class="btn btn-secondary"> View Customer</a>
-        </td>   
-    </tr>
-    }
-     <tr>
-        <td>
-            
-            @if (Model.CurrentPage != 1)
-            {
-                <a class="btn btn-secondary"
-                   asp-page="" asp-route-q="@Model.Q" 
-                   asp-route-sortColumn="@Model.SortColumn" asp-route-sortOrder="@Model.SortOrder"
-                   asp-route-pageno="@(Model.CurrentPage - 1)">Prev</a>
-            }
-        </td>
-        <td colspan="2">
-            @for (int i = 1; i <= Model.PageCount; i++)
-            {
-                string theClass = "btn-secondary";
-                if (i == @Model.CurrentPage)
+    <div class="row">
+        <div class="col-6">
+            <a asp-page="New" class="btn btn-primary">Add New Customer</a>
+        </div>
+    </div>
+    <br />
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">
+                        Customer ID
+                        <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="CustomerId" asp-route-sortOrder="@ExtensionMethods.QuerySortOrder.Asc">
+                            <i class="fa-solid fa fa-angle-up"></i>
+                        </a>
+                        <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="CustomerId" asp-route-sortOrder="@ExtensionMethods.QuerySortOrder.Desc">
+                            <i class="fa-solid fa fa-angle-down"></i>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        First Name
+                        <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="Givenname" asp-route-sortOrder="@ExtensionMethods.QuerySortOrder.Asc">
+                            <i class="fa-solid fa fa-angle-up"></i>
+                        </a>
+                        <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="Givenname" asp-route-sortOrder="@ExtensionMethods.QuerySortOrder.Desc">
+                            <i class="fa-solid fa fa-angle-down"></i>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        Last Name
+                        <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="Surname" asp-route-sortOrder="@ExtensionMethods.QuerySortOrder.Asc">
+                            <i class="fa-solid fa fa-angle-up"></i>
+                        </a>
+                        <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="Surname" asp-route-sortOrder="@ExtensionMethods.QuerySortOrder.Desc">
+                            <i class="fa-solid fa fa-angle-down"></i>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        Personal Number
+                        <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="NationalId" asp-route-sortOrder="@ExtensionMethods.QuerySortOrder.Asc">
+                            <i class="fa-solid fa fa-angle-up"></i>
+                        </a>
+                        <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="NationalId" asp-route-sortOrder="@ExtensionMethods.QuerySortOrder.Desc">
+                            <i class="fa-solid fa fa-angle-down"></i>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        Street Address
+                        <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="Streetaddress" asp-route-sortOrder="@ExtensionMethods.QuerySortOrder.Asc">
+                            <i class="fa-solid fa fa-angle-up"></i>
+                        </a>
+                        <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="Streetaddress" asp-route-sortOrder="@ExtensionMethods.QuerySortOrder.Desc">
+                            <i class="fa-solid fa fa-angle-down"></i>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        City
+                        <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="City" asp-route-sortOrder="@ExtensionMethods.QuerySortOrder.Asc">
+                            <i class="fa-solid fa fa-angle-up"></i>
+                        </a>
+                        <a asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="City" asp-route-sortOrder="@ExtensionMethods.QuerySortOrder.Desc">
+                            <i class="fa-solid fa fa-angle-down"></i>
+                        </a>
+                    </th>
+                    <th scope="col"></th>
+                    <th></th>
+                    <th scope="col"></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in Model.Customers)
                 {
-                    theClass = "btn-primary";
+                    <tr>
+                        <td width="10%">
+                            @customer.CustomerId
+                        </td>
+                        <td width="10%">
+                            @customer.Givenname
+                        </td>
+                        <td width="15%">
+                            @customer.Surname
+                        </td>
+                        <td width="15%">
+                            @customer.NationalId
+                        </td>
+                        <td width="15%">
+                            @customer.Streetaddress
+                        </td>
+                        <td width="10%">
+                            @customer.City
+                        </td>
+                        <td width="10%">
+                            <a asp-page="/Customer/CustomerProfile" asp-route-customerId="@customer.CustomerId"><i class='fas fa-user-alt'></i></a>
+                        </td>
+                        <td width="10%">
+                            <a asp-page="Edit" asp-route-customerId="@customer.CustomerId"><i class='fas fa-user-edit'></i></a>
+                        </td>
+                    </tr>
                 }
+                <tr>
+                    <td>
 
-@*                <a class="btn @(Model.CurrentPage == i ? "btn-primary" : "btn-secondary" )"
-                   asp-page="/Category" asp-route-searchWord="@Model.SearchWord" asp-route-categoryId="@Model.CategoryId"
-                   asp-route-sortColumn="@Model.SortColumn" asp-route-sortOrder="@Model.SortOrder"
-                   asp-route-pageno="@i">@i</a>
-*@
+                        @if (Model.CurrentPage != 1)
+                        {
+                            <a class="btn btn-secondary"
+                           asp-page="" asp-route-q="@Model.Q"
+                           asp-route-sortColumn="@Model.SortColumn" asp-route-sortOrder="@Model.SortOrder"
+                           asp-route-pageno="@(Model.CurrentPage - 1)">Prev</a>
+                        }
+                    </td>
+                    <td colspan="2">
+                        @for (int i = 1; i <= Model.PageCount; i++)
+                        {
+                            string theClass = "btn-secondary";
+                            if (i == @Model.CurrentPage)
+                            {
+                                theClass = "btn-primary";
+                            }
 
-                <a class="btn @theClass"
-                   asp-page="" asp-route-q="@Model.Q" 
-                   asp-route-sortColumn="@Model.SortColumn" asp-route-sortOrder="@Model.SortOrder"
-                   asp-route-pageno="@i">@i</a>
-            }
-        </td>
-        <td>
-            
-            
-            <a class="btn btn-secondary" asp-page="" asp-route-q="@Model.Q"  asp-route-sortColumn="@Model.SortColumn" asp-route-sortOrder="@Model.SortOrder" asp-route-pageno="@(Model.CurrentPage + 1)">Next</a>
+                            <a class="btn @theClass"
+                           asp-page="" asp-route-q="@Model.Q"
+                           asp-route-sortColumn="@Model.SortColumn" asp-route-sortOrder="@Model.SortOrder"
+                           asp-route-pageno="@i">@i</a>
+                        }
+                    </td>
+                    <td>
 
-        </td>
-    </tr>
-</tbody>
-</table>
+
+                        <a class="btn btn-secondary" asp-page="" asp-route-q="@Model.Q" asp-route-sortColumn="@Model.SortColumn" asp-route-sortOrder="@Model.SortOrder" asp-route-pageno="@(Model.CurrentPage + 1)">Next</a>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
-</section>
 
 

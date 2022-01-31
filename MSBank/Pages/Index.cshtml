@@ -2,119 +2,118 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-    
+
 }
 
-  <div class="card card-success">
-              <div class="card-header">
-                <h3 class="card-title">Bar Chart</h3>
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
 
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
+        <div class="col-xl-3 col-lg-8">
+            <div class="card l-bg-blue-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-users"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">Total Customers</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <h2 class="d-flex align-items-center mb-0">
+                                @Model.TotalCustomers
+                            </h2>
+                        </div>
+                        <div class="col-6 text-right">
+                            <span>9.23% <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                    <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                        <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                    </div>
                 </div>
-              </div>
-              <div class="card-body">
-                <div class="chart">
-                  <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-8">
+            <div class="card l-bg-green-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">Total Accounts</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <h2 class="d-flex align-items-center mb-0">
+                                @Model.TotalAccounts
+                            </h2>
+                        </div>
+                        <div class="col-6 text-right">
+                            <span>10% <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                    <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                        <div class="progress-bar l-bg-orange" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                    </div>
                 </div>
-              </div>
-              <!-- /.card-body -->
-  </div>
+            </div>
+        </div>
 
-  <script>
-       //-------------
-    //- BAR CHART -
-    //-------------
-    //$(function (){
+        <div class="col-xl-3 col-lg-8">
+            <div class="card l-bg-orange-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-dollar-sign"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0">Total Account Balance</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <h2 class="d-flex align-items-center mb-0">
+                                @Model.TotalAccountBalance
+                            </h2>
+                        </div>
+                        <div class="col-6 text-right">
+                            <span>12.5% <i class="fa fa-arrow-up"></i></span>
+                        </div>
+                    </div>
+                    <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                        <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    //var barChartCanvas = $('#barChart').get(0).getContext('2d')
-    //var barChartData = $.extend(true, {}, areaChartData)
-    //var temp0 = areaChartData.datasets[0]
-    //var temp1 = areaChartData.datasets[1]
-    //barChartData.datasets[0] = temp1
-    //barChartData.datasets[1] = temp0
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Carousel indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol> <!-- Wrapper for carousel items -->
+        <div class="carousel-inner">
+            <div class="item carousel-item active">
+                <div class="img-box"><img src="https://i.imgur.com/Ur43esv.jpg" alt=""></div>
+                <p class="testimonial">Phasellus vitae suscipit justo. Mauris pharetra feugiat ante id lacinia. Etiam faucibus mauris id tempor egestas. Duis luctus turpis at accumsan tincidunt. Phasellus risus risus, volutpat vel tellus ac, tincidunt fringilla massa. Etiam hendrerit dolor eget rutrum.</p>
+                <p class="overview"><b>Paula Wilsons</b>Seo Analyst </p>
+                <div class="star-rating"> </div>
+            </div>
+            <div class="item carousel-item">
+                <div class="img-box"><img src="https://i.imgur.com/8RKXAIV.jpg" alt=""></div>
+                <p class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Vestibulum idac nisl bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
+                <p class="overview"><b>Paula Wilson</b>Media Analyst </p>
+                <div class="star-rating"> </div>
+            </div>
+            <div class="item carousel-item">
+                <div class="img-box"><img src="https://i.imgur.com/J6l19aF.jpg" alt=""></div>
+                <p class="testimonial">Vestibulum quis quam ut magna consequat faucibus. Pellentesque eget nisi a mi suscipit tincidunt. Utmtc tempus dictum risus. Pellentesque viverra sagittis quam at mattis. Suspendisse potenti. Aliquam sit amet gravida nibh, facilisis gravida odio. Phasellus auctor velit.</p>
+                <p class="overview"><b>Antonio Moreno</b>Web Developer</p>
+                <div class="star-rating"> </div>
+            </div>
+        </div> <!-- Carousel controls --> <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev"> <i class="fa fa-angle-left"></i> </a> <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next"> <i class="fa fa-angle-right"></i> </a>
+    </div>
+</div>
 
-    //var barChartOptions = {
-    //  responsive              : true,
-    //  maintainAspectRatio     : false,
-    //  datasetFill             : false
-    //}
 
-    //new Chart(barChartCanvas, {
-    //  type: 'bar',
-    //  data: barChartData,
-    //  options: barChartOptions
-    //})
-    
-    //});
 
-     var chart = document.getElementById("barChart").getContext('2d');
-        Chart.defaults.global.animation.duration = 2000;
-        var barChart = new Chart(chart,
-            {
-                type: 'bar',
-                data: {
-                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                    datasets: [{
-                            label: 'Weekly Expenses',
-                            fill: true,
-                            barTension: 0.1,
-                            borderColor: '#2C3E50',  
-                            borderWidth: 2,
-                            borderCapStyle: 'butt',
-                            borderDash: [],
-                            borderDashOffset: 0.0,
-                            borderJoinStyle: 'miter',
-                            pointBorderColor: "#2C3E50",
-                            pointBackgroundColor: "#fff",
-                            pointBorderWidth: 2,
-                            pointHoverRadius: 8,
-                            pointHoverBackgroundColor: "#2C3E50",
-                            pointHoverBorderColor: "#2C3E50",
-                            pointHoverBorderWidth: 5,
-                            pointRadius: 10,
-                            PointHitRadius:10,
-                            data: [20,30,40,50,60,70,80,90,100,120,140,50]
-                    },
-                     {
-                            label: 'Monthly Expenses',
-                            fill: true,
-                            barTension: 0.8,
-                            backgroundColor: '#2C3E50',
-                            borderColor: '#f0c419',  
-                            borderWidth: 2,
-                            borderCapStyle: 'butt',
-                            borderDash: [],
-                            borderDashOffset: 0.0,
-                            borderJoinStyle: 'miter',
-                            pointBorderColor: "#f0c419",
-                            pointBackgroundColor: "#fff",
-                            pointBorderWidth: 1,
-                            pointHoverRadius: 5,
-                            pointHoverBackgroundColor: "#f0c419",
-                            pointHoverBorderColor: "#f0c419",
-                            pointHoverBorderWidth: 2,
-                            pointRadius: 1,
-                            PointHitRadius:1,
-                            data: /**/ data <<--- data will be here
-                        }
-                    ]
-                },
-                 options: {
-                    scales: {
-                        yAxes: [
-                            {
-                                ticks: {
-                                    beginAtZero: true,
-                                },
-                            }]
-                    }
-                }
 
-            });
-  </script>
+
+
+

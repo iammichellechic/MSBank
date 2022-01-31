@@ -1,0 +1,12 @@
+﻿@model MSBank.ViewModels.CustomerViewModel
+
+
+<div class="card mx-auto" style="width: 18rem;">
+  <img src="https://picsum.photos/300/300?@Model.CustomerId" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h4 class="card-title">Customer Name:@Model.Givenname, @Model.Surname</h4>
+    <p class="card-text">Customer Id: @Model.CustomerId</p>
+     <p class="card-text">Email: @Model.Emailaddress</p>
+   @* <a asp-page="/Account/AccountInfo" asp-route-accountId="#" class="btn btn-primary">View Account's Transactions</a>*@
+  </div>
+</div>

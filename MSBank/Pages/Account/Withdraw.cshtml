@@ -3,14 +3,47 @@
 @{
 }
 
-
 <form method="post">
-    
-    <div class="form-group">
-        <label asp-for="Amount">Amount</label>
-        <input class="form-control" asp-for="Amount" />
-        <span class="field-validation-error" asp-validation-for="Amount"></span>
-    </div>
 
-    <button type="submit" class="btn">Withdraw</button>
+    <div class="border p-3 form-horizontal">
+        @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+        <div class="form-group row">
+            <h2 class="text-primary pl-3">Make A Withdrawal</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label asp-for="Amount">Amount</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-6">
+                        <input class="form-control" asp-for="Amount" />
+                        <span class="field-validation-error" asp-validation-for="Amount"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-8 offset-2 row">
+                        <div class="col">
+                            <button type="submit" class="btn btn-success">Withdraw</button>
+                        </div>
+                        <div class="col">
+                            <a asp-page="Index" class="btn btn-danger w-75">Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
+
+
+@section scripts
+{
+<partial name="_ValidationScriptsPartial" />
+}  

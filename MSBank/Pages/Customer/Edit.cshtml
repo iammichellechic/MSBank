@@ -1,0 +1,88 @@
+﻿@page
+@model MSBank.Pages.Customer.EditModel
+@{
+}
+
+<div class="card">
+    <div class="card-header">
+        <h1>Edit customer</h1>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Givenname">First Name</label>
+                <input class="form-control" asp-for="Givenname">
+                <span asp-validation-for="Givenname" class="field-validation-error"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Surname">Last Name</label>
+                <input class="form-control" asp-for="Surname">
+                <span asp-validation-for="Surname" class="field-validation-error"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="Gender">Gender</label>
+                <input class="form-control" asp-for="Gender">
+                <span asp-validation-for="Gender" class="field-validation-error"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Streetaddress">Street Adress</label>
+                <input class="form-control" asp-for="Streetaddress">
+                <span asp-validation-for="Streetaddress" class="field-validation-error"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="City">City</label>
+                <input class="form-control" asp-for="City">
+                <span asp-validation-for="City" class="field-validation-error"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Zipcode">Zipcode</label>
+                <input class="form-control" asp-for="Zipcode">
+                <span asp-validation-for="Zipcode" class="field-validation-error"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CountryCode">Country code</label>
+                <input class="form-control" asp-for="CountryCode">
+                <span asp-validation-for="CountryCode" class="field-validation-error"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country">Country</label>
+                <input class="form-control" asp-for="Country">
+                <span asp-validation-for="Country" class="field-validation-error"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Birthday">BirthDate</label>
+                <input class="form-control" asp-for="Birthday">
+                <span asp-validation-for="Birthday" class="field-validation-error"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NationalId">Personal ID</label>
+                <input class="form-control" asp-for="NationalId">
+                <span asp-validation-for="NationalId" class="field-validation-error"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telephonenumber">Telephone No</label>
+                <input class="form-control" asp-for="Telephonenumber">
+                <span asp-validation-for="Telephonenumber" class="field-validation-error"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telephonecountrycode">Telephone Country Code</label>
+                <input class="form-control" asp-for="Telephonecountrycode">
+                <span asp-validation-for="Telephonecountrycode" class="field-validation-error"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Emailaddress">Email Address</label>
+                <input class="form-control" asp-for="Emailaddress">
+                <span asp-validation-for="Emailaddress" class="field-validation-error"></span>
+            </div>           
+        
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+
+    </div>
+</div>
+
+
+@section scripts
+{
+    <partial name="_ValidationScriptsPartial"/>
+}    

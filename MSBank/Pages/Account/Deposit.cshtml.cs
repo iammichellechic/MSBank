@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MSBank.Services;
@@ -6,11 +7,14 @@ using System.ComponentModel.DataAnnotations;
 namespace MSBank.Pages.Account
 {
     [BindProperties]
+
+    [Authorize(Roles = "Admin, Cashier")]
     public class DepositModel : PageModel
     {
         private readonly IAccountService _accountService;
 
         [Range(10, 3000)]
+        [Required(ErrorMessage = "Please provide amount")]
         public int Amount { get; set; }
         public DateTime Created { get; set; }
 
@@ -40,6 +44,7 @@ namespace MSBank.Pages.Account
                 var account = _accountService.GetAccount(accountId);
                 account.Balance += Amount;
                 _accountService.Update(account);
+              //  _accountService.CreateTransaction(accountId, Amount);
                 return RedirectToPage("Index");
 
             }

@@ -49,3 +49,211 @@ body {
     font-size: 80%;
     color: #dc3545;
 }
+
+/*front page */
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    margin-bottom: 30px;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,0.1), 0 0.9375rem 1.40625rem rgba(90,97,105,0.1), 0 0.25rem 0.53125rem rgba(90,97,105,0.12), 0 0.125rem 0.1875rem rgba(90,97,105,0.1);
+}
+
+.l-bg-cherry {
+    background: linear-gradient(to right, #493240, #f09) !important;
+    color: #fff;
+}
+
+.l-bg-blue-dark {
+    background: linear-gradient(to right, #373b44, #4286f4) !important;
+    color: #fff;
+}
+
+.l-bg-green-dark {
+    background: linear-gradient(to right, #0a504a, #38ef7d) !important;
+    color: #fff;
+}
+
+.l-bg-orange-dark {
+    background: linear-gradient(to right, #a86008, #ffba56) !important;
+    color: #fff;
+}
+
+.card .card-statistic-3 .card-icon-large .fas, .card .card-statistic-3 .card-icon-large .far, .card .card-statistic-3 .card-icon-large .fab, .card .card-statistic-3 .card-icon-large .fal {
+    font-size: 110px;
+}
+
+.card .card-statistic-3 .card-icon {
+    text-align: center;
+    line-height: 50px;
+    margin-left: 15px;
+    color: #000;
+    position: absolute;
+    right: -5px;
+    top: 20px;
+    opacity: 0.1;
+}
+
+.l-bg-cyan {
+    background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
+    color: #fff;
+}
+
+.l-bg-green {
+    background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%) !important;
+    color: #fff;
+}
+
+.l-bg-orange {
+    background: linear-gradient(to right, #f9900e, #ffba56) !important;
+    color: #fff;
+}
+
+.l-bg-cyan {
+    background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
+    color: #fff;
+}
+
+
+
+body {
+    font-family: "Open Sans", sans-serif;
+    margin-top: 200px
+}
+
+/*h2 {
+    color: #333;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    position: relative;
+    margin: 25px 0 50px
+}
+
+    h2::after {
+        content: "";
+        width: 100px;
+        position: absolute;
+        margin: 0 auto;
+        height: 3px;
+        background: #ffdc12;
+        left: 0;
+        right: 0;
+        bottom: -10px
+    }*/
+
+.carousel {
+    width: 650px;
+    margin: 0 auto;
+    padding-bottom: 50px
+}
+
+    .carousel .item {
+        color: #999;
+        font-size: 14px;
+        text-align: center;
+        overflow: hidden;
+        min-height: 340px
+    }
+
+        .carousel .item a {
+            color: #eb7245
+        }
+
+    .carousel .img-box {
+        width: 145px;
+        height: 145px;
+        margin: 0 auto;
+        border-radius: 50%
+    }
+
+        .carousel .img-box img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 50%
+        }
+
+    .carousel .testimonial {
+        padding: 30px 0 10px
+    }
+
+.testimonial {
+    color: #000000;
+    font: Times Roman
+}
+
+.carousel .overview {
+    text-align: center;
+    padding-bottom: 5px
+}
+
+    .carousel .overview b {
+        color: #333;
+        font-size: 15px;
+        text-transform: uppercase;
+        display: block;
+        padding-bottom: 5px
+    }
+
+.carousel .star-rating i {
+    font-size: 18px;
+    color: #ffdc12
+}
+
+.carousel .carousel-control {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #999;
+    text-shadow: none;
+    top: 4px
+}
+
+.carousel-control i {
+    font-size: 20px;
+    margin-right: 2px
+}
+
+.carousel-control.left {
+    left: auto;
+    right: 40px
+}
+
+.carousel-control.right i {
+    margin-right: -2px
+}
+
+.carousel .carousel-indicators {
+    bottom: 15px
+}
+
+.carousel-indicators li,
+.carousel-indicators li.active {
+    width: 11px;
+    height: 11px;
+    margin: 1px 5px;
+    border-radius: 50%
+}
+
+.carousel-indicators li {
+    background: #e2e2e2;
+    border-color: transparent
+}
+
+    .carousel-indicators li.active {
+        border: none;
+        background: #888
+    }
+
+
+/*forms */
+.form-horizontal {
+    
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+   
+}

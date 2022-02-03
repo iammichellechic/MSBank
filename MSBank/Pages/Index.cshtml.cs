@@ -22,12 +22,9 @@ namespace MSBank.Pages
             _dbcontext = dbcontext;
             _context = context;
         }
-
-      
+    
         public void OnGet()
         {
-          
-
             TotalCustomers = _context.Customers.Count();
             TotalAccounts = _context.Accounts.Count();
             TotalAccountBalance = _context.Accounts.Select(a=>a.Balance).Sum();

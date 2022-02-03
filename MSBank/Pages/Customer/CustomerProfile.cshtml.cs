@@ -13,25 +13,15 @@ namespace MSBank.Pages.Customer
     public class CustomerProfileModel : PageModel
     {
         private readonly BankAppDataContext _context;
-        private readonly IAccountService _accountService;
-
-        //public List<AccountViewModel> CustomerAccount { get; set; }
-
-        //public class AccountViewModel
-        //{
-        //    public int AccountNumber { get; set; }
-        //    public decimal Balance { get; set; }
-        //}
-
-
+     
         public decimal TotalBalance { get; set; }
         public List<CustomerViewModel> CustomerProfile { get; set; }
 
-        public CustomerProfileModel(BankAppDataContext context, IAccountService accountService)
+        public CustomerProfileModel(BankAppDataContext context)
 
         {
             _context = context;
-            _accountService = accountService;
+            
 
         }
   
@@ -63,17 +53,6 @@ namespace MSBank.Pages.Customer
                     Balance = r.Account.Balance,
                  
                 }).ToList();
-
-
-
-            //CustomerAccount = _accountService.GetAll()
-            
-            //    .Select(r => new AccountViewModel
-            //{
-            //    AccountNumber = r.AccountId,
-            //    Balance = r.Balance
-            //}).ToList();
-
         }
     }
 }

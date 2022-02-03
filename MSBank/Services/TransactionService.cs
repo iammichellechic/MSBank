@@ -12,11 +12,6 @@ namespace MSBank.Services
             _context = context;
         }
 
-        public void CreateTransaction(Transaction transaction)
-        {
-            _context.SaveChanges();
-        }
-
         public List<Transaction> GetAllTransactions(int accountId, long lastTicks)
         {
             DateTime dateOfLastShown = new DateTime(lastTicks).AddMilliseconds(100);
@@ -29,19 +24,5 @@ namespace MSBank.Services
                 .Take(20)
                 .ToList();
         }
-
-        //public void OnPostCreateTransaction()
-        //{
-            
-        //        var customer = new Models.Transaction
-        //        {
-                    
-        //            //  Disposition=_context.Dispositions.First(e => e.DispositionId == DispositionId)
-
-               
-        //        _context.Transactions.Add();
-        //        _context.SaveChanges();
-
-        //    }
-        }
+    }
 }

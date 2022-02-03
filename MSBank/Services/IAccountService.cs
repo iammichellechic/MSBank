@@ -10,7 +10,6 @@ namespace MSBank.Services
 
         void Update(Account account);
 
-        //void CreateTransaction(int accountId, int amount);
         Account GetAccount(int id);
     }
 }

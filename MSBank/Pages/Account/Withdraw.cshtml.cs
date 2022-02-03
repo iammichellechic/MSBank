@@ -12,7 +12,7 @@ namespace MSBank.Pages.Account
     public class WithdrawModel : PageModel
     {
         private readonly IAccountService _accountService;
-       // private readonly ITransactionService _transactionService;
+    
 
         [Range(10, 3000)]
         [Required(ErrorMessage = "Please provide amount")]
@@ -22,7 +22,7 @@ namespace MSBank.Pages.Account
         public WithdrawModel(IAccountService accountService)
         {
             _accountService = accountService;
-           // _transactionService = transactionService;
+       
         }
 
         public void OnGet(int accountId)

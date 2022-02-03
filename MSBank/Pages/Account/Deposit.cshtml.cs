@@ -44,7 +44,7 @@ namespace MSBank.Pages.Account
                 var account = _accountService.GetAccount(accountId);
                 account.Balance += Amount;
                 _accountService.Update(account);
-              //  _accountService.CreateTransaction(accountId, Amount);
+            
                 return RedirectToPage("Index");
 
             }

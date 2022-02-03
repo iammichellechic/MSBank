@@ -51,18 +51,7 @@ namespace MSBank.Services
             return _context.Accounts.First(e => e.AccountId == accountId);
         }
 
-        //public void CreateTransaction(int accountId,int amount)
-        //{
-        //    var t = _context.Transactions
-        //        .First(r => r.AccountId == accountId);
-
-        //        t.AccountId= accountId;
-        //        t.Balance= amount;
-
-        //        _context.Transactions.Add(t);
-        //         _context.SaveChanges();
-        //}
-
+     
 
     }
 }

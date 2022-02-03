@@ -31,7 +31,7 @@ builder.Services.AddTransient<ITransactionService, TransactionService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-builder.Services.AddResponseCaching();
+//builder.Services.AddResponseCaching();
 
 builder.Services.AddRazorPages();
 
@@ -61,7 +61,7 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseResponseCaching();
+//app.UseResponseCaching();
 
 app.MapRazorPages();
 

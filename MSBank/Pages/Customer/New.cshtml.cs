@@ -44,41 +44,12 @@ namespace MSBank.Pages.Customer
         [EmailAddress]
         public string? Emailaddress { get; set; }
 
-        //public int AccountId { get; set; }
-        //public int DispositionId { get; set; }
-        //public string DispositionType { get; set; }
-
-        //public Disposition Disposition { get; set; }
-
-        //[Range(1, 10000, ErrorMessage = "Choose ownership")]
-        //public int DispositionId { get; set; }
-        //public List<SelectListItem> Dispositions { get; set; }
-
         public NewModel(BankAppDataContext context)
         {
             _context = context;
          
         }
 
-        //public void OnGet()
-        //{
-        //    FillDispositionList();
-        //}
-
-        //private void FillDispositionList()
-        //{
-        //    Dispositions=_context.Dispositions.Select(d=>new SelectListItem
-        //    {
-                
-        //        Text=d.Type
-             
-        //    }).ToList();
-        //    Dispositions.Insert(0, new SelectListItem
-        //    {
-        //        Text = "Choose ownership"
-             
-        //    });
-        //}
         public IActionResult OnPost()
         {
            if (ModelState.IsValid)
@@ -98,7 +69,7 @@ namespace MSBank.Pages.Customer
                     Telephonenumber = Telephonenumber,
                     Emailaddress = Emailaddress,
                     Zipcode = Zipcode,
-                  //  Disposition=_context.Dispositions.First(e => e.DispositionId == DispositionId)
+              
 
                 };
 
@@ -107,7 +78,7 @@ namespace MSBank.Pages.Customer
 
                 return RedirectToPage("Index");
             }
-          //  FillDispositionList();
+
           return Page();
          }
         
